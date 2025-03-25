@@ -27,19 +27,21 @@ XGBoost is an implementation of **Gradient Boosting** but with optimizations. Th
      - **Regularization term**: Helps prevent overfitting by penalizing complex models (deep trees). The regularization term is critical in XGBoost, and its introduction makes the algorithm more efficient.
 
    The objective function to minimize is:
-   \[
-   L = \sum_{i=1}^{n} \left( \text{Loss}(y_i, \hat{y}_i) \right) + \sum_{k=1}^{T} \Omega(f_k)
-   \]
-   where:
-   - \(\text{Loss}(y_i, \hat{y}_i)\) is the loss function for each prediction.
-   - \(\Omega(f_k)\) is the regularization term for each tree \(f_k\).
+   $$
+   L = \sum_{i=1}^{n} \text{Loss}(y_i, \hat{y}_i) + \sum_{k=1}^{T} \Omega(f_k)
+   $$
+
+   where:  
+
+   - $\text{Loss}(y_i, \hat{y}_i)$ is the loss function for each prediction.  
+   - $\Omega(f_k)$ is the regularization term for each tree $ f_k $.  
 
 5. **Update Predictions**:
    - Update the model's predictions by adding the new tree's predictions weighted by the learning rate.
-   \[
+   $$
    \hat{y}_{new} = \hat{y}_{previous} + \eta \times \text{new tree predictions}
-   \]
-   where \(\eta\) is the learning rate.
+   $$
+   where $\eta$ is the learning rate.
 
 6. **Repeat**:
    - Repeat steps 2-5 iteratively, training additional trees until the model reaches a stopping condition (like a maximum number of iterations or when the model's improvement plateaus).

@@ -24,14 +24,18 @@ The transformer architecture is composed of two main parts: the **Encoder** and 
     - **Query (Q)**, **Key (K)**, and **Value (V)** are derived from the input embeddings. These vectors are used to compute the attention scores.
     
     - **Attention Formula**:
-      \[
-      \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V
-      \]
-      where:
-        - \( Q \) = Query matrix
-        - \( K \) = Key matrix
-        - \( V \) = Value matrix
-        - \( d_k \) = Dimension of key vectors
+    $$
+    \text{Attention}(Q, K, V) = \text{softmax} \left(\frac{QK^T}{\sqrt{d_k}}\right) V
+    $$
+
+    where:  
+    - \( Q \) = Query matrix  
+    - \( K \) = Key matrix  
+    - \( V \) = Value matrix  
+    - \( d_k \) = Dimension of key vectors  
+ 
+ 
+
       - **Attention Scores**: These are used to weigh the values (V). The model learns which parts of the sequence to focus on based on the query-key interactions.
       - **Context-Aware Embedding**: The attention scores help in creating context-aware embeddings by aggregating values (V) weighted by the attention scores.
 
