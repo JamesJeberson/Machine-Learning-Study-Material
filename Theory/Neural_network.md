@@ -24,19 +24,19 @@ Here’s how forward propagation works:
 - **Step 4**: The output is passed to the next layer as input.
 - **Step 5**: This process repeats until the final output layer produces the result.
 
-Mathematically, for a given neuron \( i \) in the hidden layer:
-\[
+Mathematically, for a given neuron $ i $ in the hidden layer:
+$$
 z_i = \sum_{j} (w_{ij} x_j) + b_i
-\]
+$$
 Where:
-- \( w_{ij} \) is the weight between input neuron \( j \) and hidden neuron \( i \),
-- \( x_j \) is the input to neuron \( j \),
-- \( b_i \) is the bias term.
+- $ w_{ij} $ is the weight between input neuron $ j $ and hidden neuron $ i $,
+- $ x_j $ is the input to neuron $ j $,
+- $ b_i $ is the bias term.
 
-Then, the output \( y_i \) of the neuron is:
-\[
+Then, the output $ y_i $ of the neuron is:
+$$
 y_i = \text{activation}(z_i)
-\]
+$$
 The **activation function** determines the output based on the weighted sum of the inputs.
 
 #### **2. Activation Functions**
@@ -46,32 +46,32 @@ An **activation function** is a mathematical function applied to the sum of the 
 ##### **Types of Activation Functions**:
 
 1. **Sigmoid**:
-   - Formula: \( \sigma(x) = \frac{1}{1 + e^{-x}} \)
+   - Formula: $ \sigma(x) = \frac{1}{1 + e^{-x}} $
    - Output range: (0, 1)
    - **Use case**: Mostly used in binary classification problems, especially in the output layer of binary classification.
-   - **Limitation**: Sigmoid functions suffer from the **vanishing gradient problem** for large positive or negative values of \( x \).
+   - **Limitation**: Sigmoid functions suffer from the **vanishing gradient problem** for large positive or negative values of $ x $.
 
 2. **ReLU (Rectified Linear Unit)**:
-   - Formula: \( \text{ReLU}(x) = \max(0, x) \)
+   - Formula: $ \text{ReLU}(x) = \max(0, x) $
    - Output range: [0, ∞)
    - **Use case**: Very popular in hidden layers of deep networks.
    - **Advantages**: Faster convergence and less computationally expensive than sigmoid.
    - **Limitation**: **Dying ReLU** problem, where neurons may become inactive if the output is always zero.
 
 3. **Tanh (Hyperbolic Tangent)**:
-   - Formula: \( \text{tanh}(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} \)
+   - Formula: $ \text{tanh}(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} $
    - Output range: (-1, 1)
    - **Use case**: Tanh is often used for classification tasks where outputs are in the range (-1, 1).
    - **Limitation**: Like sigmoid, it suffers from the vanishing gradient problem.
 
 4. **Softmax**:
-   - Formula: \( \text{Softmax}(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}} \)
+   - Formula: $ \text{Softmax}(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}} $
    - Output range: (0, 1) for each neuron, and all outputs sum to 1.
    - **Use case**: Typically used in the output layer for multi-class classification problems.
    - **Advantages**: Converts the network outputs into probability distributions.
 
 5. **Leaky ReLU**:
-   - Formula: \( \text{Leaky ReLU}(x) = \max(\alpha x, x) \) where \( \alpha \) is a small constant.
+   - Formula: $ \text{Leaky ReLU}(x) = \max(\alpha x, x) $ where $ \alpha $ is a small constant.
    - Output range: (-∞, ∞)
    - **Use case**: Variant of ReLU, where the output can be slightly negative to avoid dead neurons.
    - **Advantages**: Helps avoid the dying ReLU problem.
@@ -87,26 +87,26 @@ Here’s how backpropagation works:
   
   The **loss function** calculates the error (for example, Mean Squared Error or Cross-Entropy Loss).
 
-  \[
+  $$
   \text{Loss} = \frac{1}{2} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2
-  \]
+  $$
   
 - **Step 2**: Compute the gradient of the error with respect to the weights using the **chain rule**. This gives us the direction in which to adjust the weights.
   
-  \[
+  $$
   \frac{\partial \text{Loss}}{\partial w} = \frac{\partial \text{Loss}}{\partial y} \cdot \frac{\partial y}{\partial z} \cdot \frac{\partial z}{\partial w}
-  \]
+  $$
   
   The gradients are propagated back from the output layer to the input layer.
 
 - **Step 3**: Update the weights in the direction that minimizes the loss using an optimization algorithm (like **Gradient Descent** or **Adam**).
 
   The weight update rule for **Gradient Descent** is:
-  \[
+  $$
   w = w - \eta \cdot \frac{\partial \text{Loss}}{\partial w}
-  \]
+  $$
   Where:
-  - \( \eta \) is the learning rate.
+  - $ \eta $ is the learning rate.
 
 - **Step 4**: Repeat this process iteratively (over multiple epochs) until the loss is minimized.
 
@@ -116,7 +116,7 @@ Here’s how backpropagation works:
 
 The **vanishing gradient problem** occurs when the gradients used in backpropagation become very small as they are propagated backward through the network, especially for deep networks with many layers. This results in the weights not updating effectively, causing the model to stop learning or learn very slowly.
 
-- **Cause**: This problem is most common when using activation functions like **sigmoid** and **tanh**, which have very small gradients for large positive or negative values of \( z \).
+- **Cause**: This problem is most common when using activation functions like **sigmoid** and **tanh**, which have very small gradients for large positive or negative values of $ z $.
 - **Effect**: It prevents the weights in earlier layers from being updated, making it harder for the network to learn complex patterns.
 
 ### **How to Tackle Vanishing Gradient Problem:**

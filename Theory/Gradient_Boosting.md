@@ -16,10 +16,10 @@ The key idea behind Gradient Boosting is that each new model is trained to predi
 2. **Calculate the Residuals**:
    - The residuals (errors) are calculated as the difference between the actual target values and the predicted values of the previous model. These residuals represent the error the model has made.
 
-   \[
+   $$
    \text{Residual}_i = y_i - \hat{y}_i
-   \]
-   where \(y_i\) is the actual value, and \(\hat{y}_i\) is the predicted value.
+   $$
+   where $y_i$ is the actual value, and $\hat{y}_i$ is the predicted value.
 
 3. **Fit a New Model to the Residuals**:
    - Train a weak model (usually a shallow decision tree) to predict the residuals. This model will focus on correcting the errors made by the previous model.
@@ -27,9 +27,9 @@ The key idea behind Gradient Boosting is that each new model is trained to predi
 4. **Update the Prediction**:
    - The predictions of the new model are added to the previous model's predictions. This is typically done using a learning rate to control the contribution of the new model.
 
-   \[
+   $$
    \hat{y}_{new} = \hat{y}_{previous} + \text{learning rate} \times \text{new model predictions}
-   \]
+   $$
 
 5. **Repeat**:
    - The process is repeated iteratively for a set number of iterations or until the error reaches a threshold. Each subsequent model corrects the mistakes made by the previous ones.

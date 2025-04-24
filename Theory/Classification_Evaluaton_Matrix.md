@@ -9,9 +9,9 @@ In classification problems, particularly binary or multi-class classification ta
 #### Formula for Jaccard Index in Classification:
 For **binary classification** (positive class vs negative class), the Jaccard Index can be computed as:
 
-\[
+$$
 J = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives} + \text{False Negatives}}
-\]
+$$
 
 Where:
 - **True Positives (TP)**: The number of correctly predicted positive instances.
@@ -19,9 +19,9 @@ Where:
 - **False Negatives (FN)**: The number of instances that were incorrectly classified as negative.
 
 ### Explanation:
-- **True Positives** (\(TP\)): The instances where the model correctly predicts the positive class (i.e., both the prediction and the ground truth are positive).
-- **False Positives** (\(FP\)): The instances where the model incorrectly predicts the positive class (i.e., the model predicts positive, but the ground truth is negative).
-- **False Negatives** (\(FN\)): The instances where the model incorrectly predicts the negative class (i.e., the model predicts negative, but the ground truth is positive).
+- **True Positives** ($TP$): The instances where the model correctly predicts the positive class (i.e., both the prediction and the ground truth are positive).
+- **False Positives** ($FP$): The instances where the model incorrectly predicts the positive class (i.e., the model predicts positive, but the ground truth is negative).
+- **False Negatives** ($FN$): The instances where the model incorrectly predicts the negative class (i.e., the model predicts negative, but the ground truth is positive).
 
 The **Jaccard Index** computes the ratio of the intersection of predicted positives and true positives relative to the union of predicted positives and true positives.
 
@@ -73,9 +73,9 @@ Let’s consider an example where you have a binary classification problem with 
 
 Using the formula for Jaccard Index:
 
-\[
+$$
 J = \frac{TP}{TP + FP + FN} = \frac{50}{50 + 10 + 5} = \frac{50}{65} = 0.769
-\]
+$$
 
 So, the Jaccard Index is 0.769, which indicates that there is a **76.9%** overlap between the predicted and actual positive classes.
 
@@ -98,22 +98,22 @@ The **F1 Score** is a widely used evaluation metric in classification tasks, par
 
 The **F1 Score** is calculated using the following formula:
 
-\[
+$$
 F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-\]
+$$
 
 Where:
 - **Precision** is the proportion of true positive predictions out of all predicted positives:
-  \[
+  $$
   \text{Precision} = \frac{TP}{TP + FP}
-  \]
+  $$
   - **True Positives (TP)**: The number of instances correctly predicted as the positive class.
   - **False Positives (FP)**: The number of instances incorrectly predicted as the positive class.
   
 - **Recall** (or Sensitivity) is the proportion of true positive predictions out of all actual positives:
-  \[
+  $$
   \text{Recall} = \frac{TP}{TP + FN}
-  \]
+  $$
   - **False Negatives (FN)**: The number of instances incorrectly predicted as the negative class.
 
 ### F1 Score Range:
@@ -131,17 +131,17 @@ Consider a binary classification problem where you have:
 - **False Negatives (FN)** = 5
 
 First, calculate Precision and Recall:
-\[
+$$
 \text{Precision} = \frac{TP}{TP + FP} = \frac{50}{50 + 10} = \frac{50}{60} = 0.833
-\]
-\[
+$$
+$$
 \text{Recall} = \frac{TP}{TP + FN} = \frac{50}{50 + 5} = \frac{50}{55} = 0.909
-\]
+$$
 
 Now, calculate the **F1 Score**:
-\[
+$$
 F1 = 2 \times \frac{0.833 \times 0.909}{0.833 + 0.909} = 2 \times \frac{0.756}{1.742} = 0.865
-\]
+$$
 
 So, the **F1 Score** is **0.865**, indicating a good balance between precision and recall.
 
@@ -206,25 +206,25 @@ Log Loss is used to evaluate how well the predicted probability distribution mat
 
 The formula for **binary classification** is:
 
-\[
+$$
 \text{Log Loss} = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right]
-\]
+$$
 
 Where:
-- \( N \) is the total number of instances in the dataset.
-- \( y_i \) is the actual label for the \(i\)-th instance (0 or 1).
-- \( p_i \) is the predicted probability that the \(i\)-th instance belongs to class 1 (the positive class).
+- $ N $ is the total number of instances in the dataset.
+- $ y_i $ is the actual label for the $i$-th instance (0 or 1).
+- $ p_i $ is the predicted probability that the $i$-th instance belongs to class 1 (the positive class).
   
 For **multi-class classification**, the log loss is generalized as:
 
-\[
+$$
 \text{Log Loss} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{C} y_{i,c} \log(p_{i,c})
-\]
+$$
 
 Where:
-- \( C \) is the total number of classes.
-- \( y_{i,c} \) is the true probability distribution of the \(i\)-th instance over all classes (it is 1 if the instance belongs to class \( c \), 0 otherwise).
-- \( p_{i,c} \) is the predicted probability that the \(i\)-th instance belongs to class \(c\).
+- $ C $ is the total number of classes.
+- $ y_{i,c} $ is the true probability distribution of the $i$-th instance over all classes (it is 1 if the instance belongs to class $ c $, 0 otherwise).
+- $ p_{i,c} $ is the predicted probability that the $i$-th instance belongs to class $c$.
 
 ---
 
@@ -298,7 +298,7 @@ The **ideal** log loss value is **0**, which happens when the model is **perfect
 
 Let's assume we have a binary classification problem with the following predicted probabilities and true labels:
 
-| Instance | Predicted Probability \( p \) | True Label \( y \) |
+| Instance | Predicted Probability $ p $ | True Label $ y $ |
 |----------|------------------------------|--------------------|
 | 1        | 0.9                          | 1                  |
 | 2        | 0.1                          | 0                  |
@@ -307,21 +307,21 @@ Let's assume we have a binary classification problem with the following predicte
 
 Using the formula for log loss, we calculate the log loss for each instance:
 
-\[
+$$
 \text{Log Loss} = -\frac{1}{N} \sum \left[ y \log(p) + (1 - y) \log(1 - p) \right]
-\]
+$$
 
 For each instance:
-- **Instance 1**: \( -[1 \times \log(0.9) + (1-1) \times \log(0.1)] = -\log(0.9) = 0.1054 \)
-- **Instance 2**: \( -[0 \times \log(0.1) + (1-0) \times \log(0.9)] = -\log(0.9) = 0.1054 \)
-- **Instance 3**: \( -[1 \times \log(0.7) + (1-1) \times \log(0.3)] = -\log(0.7) = 0.3567 \)
-- **Instance 4**: \( -[0 \times \log(0.4) + (1-0) \times \log(0.6)] = -\log(0.6) = 0.5108 \)
+- **Instance 1**: $ -[1 \times \log(0.9) + (1-1) \times \log(0.1)] = -\log(0.9) = 0.1054 $
+- **Instance 2**: $ -[0 \times \log(0.1) + (1-0) \times \log(0.9)] = -\log(0.9) = 0.1054 $
+- **Instance 3**: $ -[1 \times \log(0.7) + (1-1) \times \log(0.3)] = -\log(0.7) = 0.3567 $
+- **Instance 4**: $ -[0 \times \log(0.4) + (1-0) \times \log(0.6)] = -\log(0.6) = 0.5108 $
 
 The **average log loss** is the mean of these individual log losses:
 
-\[
+$$
 \text{Average Log Loss} = \frac{0.1054 + 0.1054 + 0.3567 + 0.5108}{4} = 0.2696
-\]
+$$
 
 ---
 

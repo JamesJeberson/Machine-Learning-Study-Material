@@ -13,59 +13,59 @@ In the context of classification, a **hyperplane** is a decision boundary that s
 
 #### **2. Mathematical Formulation**
 
-For a binary classification problem with training data \((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\), where:
-- \( x_i \in \mathbb{R}^d \) is the input feature vector.
-- \( y_i \in \{-1, +1\} \) is the class label for each data point.
+For a binary classification problem with training data $(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)$, where:
+- $ x_i \in \mathbb{R}^d $ is the input feature vector.
+- $ y_i \in \{-1, +1\} $ is the class label for each data point.
 
 The goal is to find a hyperplane that maximizes the margin while correctly classifying the data points.
 
 The equation for a hyperplane is given by:
 
-\[
+$$
 w \cdot x + b = 0
-\]
+$$
 
 Where:
-- \( w \) is the weight vector, which is perpendicular to the hyperplane.
-- \( b \) is the bias term, which shifts the hyperplane.
-- \( x \) is the feature vector of a data point.
+- $ w $ is the weight vector, which is perpendicular to the hyperplane.
+- $ b $ is the bias term, which shifts the hyperplane.
+- $ x $ is the feature vector of a data point.
 
 The **margin** is defined as:
 
-\[
+$$
 \text{Margin} = \frac{2}{||w||}
-\]
+$$
 
-To maximize the margin, we need to minimize \( \frac{1}{2} ||w||^2 \) subject to the constraint that all points are classified correctly, i.e., for all \( i \):
+To maximize the margin, we need to minimize $ \frac{1}{2} ||w||^2 $ subject to the constraint that all points are classified correctly, i.e., for all $ i $:
 
-\[
+$$
 y_i (w \cdot x_i + b) \geq 1
-\]
+$$
 
 This is the **optimization problem** that SVM solves.
 
 #### **3. Soft Margin SVM**
 
-In real-world scenarios, the data is often not perfectly linearly separable. To handle this, SVM introduces the **soft margin**. Instead of enforcing perfect classification, it allows some misclassifications, controlled by a regularization parameter \( C \).
+In real-world scenarios, the data is often not perfectly linearly separable. To handle this, SVM introduces the **soft margin**. Instead of enforcing perfect classification, it allows some misclassifications, controlled by a regularization parameter $ C $.
 
 The objective is to minimize the following cost function:
 
-\[
+$$
 J(w, b, \xi) = \frac{1}{2} ||w||^2 + C \sum_{i=1}^{n} \xi_i
-\]
+$$
 
 Where:
-- \( \xi_i \) are slack variables that allow misclassification.
-- \( C \) is a regularization parameter that controls the trade-off between maximizing the margin and minimizing misclassification.
+- $ \xi_i $ are slack variables that allow misclassification.
+- $ C $ is a regularization parameter that controls the trade-off between maximizing the margin and minimizing misclassification.
 
 #### **4. Non-linear SVM (Kernel Trick)**
 
 When the data is not linearly separable in the original feature space, **SVM can be extended using kernels**. Kernels allow SVM to operate in a higher-dimensional feature space without explicitly calculating the coordinates in that space (which would be computationally expensive). 
 
 Common kernel functions include:
-- **Linear Kernel**: \( K(x, x') = x \cdot x' \)
-- **Polynomial Kernel**: \( K(x, x') = (x \cdot x' + 1)^d \)
-- **Radial Basis Function (RBF) Kernel**: \( K(x, x') = \exp\left(-\frac{||x - x'||^2}{2\sigma^2}\right) \)
+- **Linear Kernel**: $ K(x, x') = x \cdot x' $
+- **Polynomial Kernel**: $ K(x, x') = (x \cdot x' + 1)^d $
+- **Radial Basis Function (RBF) Kernel**: $ K(x, x') = \exp\left(-\frac{||x - x'||^2}{2\sigma^2}\right) $
 
 These kernels transform the input data into a higher-dimensional space, where a hyperplane can more easily separate the classes.
 
@@ -112,9 +112,9 @@ print(confusion_matrix(y_test, y_pred))
   - `'poly'`: Polynomial kernel.
   - `'sigmoid'`: Sigmoid kernel.
   
-- **C**: Regularization parameter. A high value of \( C \) tries to fit the model to the training data perfectly, leading to less margin and possible overfitting. A lower value of \( C \) allows more margin but possibly more misclassifications, leading to better generalization.
+- **C**: Regularization parameter. A high value of $ C $ tries to fit the model to the training data perfectly, leading to less margin and possible overfitting. A lower value of $ C $ allows more margin but possibly more misclassifications, leading to better generalization.
 
-- **gamma**: Kernel coefficient for RBF, poly, and sigmoid kernels. `gamma='scale'` is typically recommended, which sets \( \gamma = \frac{1}{n_{\text{features}}} \). You can also set it manually to adjust the kernel’s sensitivity.
+- **gamma**: Kernel coefficient for RBF, poly, and sigmoid kernels. `gamma='scale'` is typically recommended, which sets $ \gamma = \frac{1}{n_{\text{features}}} $. You can also set it manually to adjust the kernel’s sensitivity.
 
 - **degree**: Degree of the polynomial kernel function. Only relevant if you are using the **polynomial kernel**.
 
@@ -172,7 +172,7 @@ The evaluation metrics you use depend on the problem at hand. Common evaluation 
 - **Signs**: The model performs well on the training data but poorly on the test data. It has learned the noise or complexity of the training data.
   
 **How to Handle Overfitting**:
-- **Regularization (C parameter)**: Reduce the value of \( C \) to allow for more margin and avoid overfitting.
+- **Regularization (C parameter)**: Reduce the value of $ C $ to allow for more margin and avoid overfitting.
 - **Cross-validation**: Use cross-validation to check model performance and prevent overfitting on a single training/test split.
 - **Simplify the Model**: Use a simpler kernel (e.g., linear instead of RBF) or reduce the complexity of the kernel.
 
@@ -180,7 +180,7 @@ The evaluation metrics you use depend on the problem at hand. Common evaluation 
 - **Signs**: The model performs poorly on both the training and test data. It fails to capture the underlying patterns.
   
 **How to Handle Underfitting**:
-- **Increase Model Complexity**: Increase the value of \( C \) to allow the model to fit the data better or switch to a more complex kernel like RBF or polynomial.
+- **Increase Model Complexity**: Increase the value of $ C $ to allow the model to fit the data better or switch to a more complex kernel like RBF or polynomial.
 - **Feature Engineering**: Add more features or use kernel methods to map the data to a higher-dimensional space.
 
 ---
@@ -191,7 +191,7 @@ The evaluation metrics you use depend on the problem at hand. Common evaluation 
 - **Evaluation metrics** like accuracy, precision, recall, F1-score, ROC-AUC, and confusion matrix are used depending on the nature of the problem.
 - **Advantages**: SVM is effective in high-dimensional spaces and is versatile. 
 - **Disadvantages**: It is sensitive to outliers and computationally expensive.
-- **Overfitting and underfitting** can be handled by adjusting the regularization parameter \( C \), using cross-validation, or tweaking the choice of kernel.      
+- **Overfitting and underfitting** can be handled by adjusting the regularization parameter $ C $, using cross-validation, or tweaking the choice of kernel.      
 
 The value of the regularization parameter **C** in Support Vector Machine (SVM) can range from **0 to ∞**, and it controls the trade-off between maximizing the margin and minimizing classification errors (misclassifications).
 

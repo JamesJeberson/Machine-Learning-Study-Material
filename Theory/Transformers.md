@@ -29,10 +29,10 @@ The transformer architecture is composed of two main parts: the **Encoder** and 
     $$
 
     where:  
-    - \( Q \) = Query matrix  
-    - \( K \) = Key matrix  
-    - \( V \) = Value matrix  
-    - \( d_k \) = Dimension of key vectors  
+    - $ Q $ = Query matrix  
+    - $ K $ = Key matrix  
+    - $ V $ = Value matrix  
+    - $ d_k $ = Dimension of key vectors  
  
  
 
@@ -66,34 +66,34 @@ Here’s how these components are used in detail:
 1. **Compute Attention Scores**:
    The first step is to compute the compatibility between the Query (Q) and the Keys (K) using the **dot-product**. This gives us an initial set of attention scores.
 
-   \[
+   $$
    \text{Attention Scores} = Q \cdot K^T
-   \]
+   $$
    
    The result is a vector that represents how much each token in the sequence should contribute to the current token (Query). A higher score means more relevance, meaning the token's Value will have a greater influence on the current token's output representation.
 
 2. **Scale the Scores**:
-   Since the values of the Query and Key vectors can be large, we scale the attention scores by dividing by the square root of the dimension of the Key vector (\( \sqrt{d_k} \)) to stabilize the gradients.
+   Since the values of the Query and Key vectors can be large, we scale the attention scores by dividing by the square root of the dimension of the Key vector ($ \sqrt{d_k} $) to stabilize the gradients.
 
-   \[
+   $$
    \text{Scaled Attention Scores} = \frac{Q \cdot K^T}{\sqrt{d_k}}
-   \]
+   $$
 
 3. **Apply Softmax**:
    After scaling, we apply the **softmax** function to the attention scores. The softmax function normalizes these scores so that they sum to 1. This ensures that each token has a "soft" attention weight, representing its relative importance in the context of the current token.
 
-   \[
+   $$
    \text{Attention Weights} = \text{softmax}\left( \frac{Q \cdot K^T}{\sqrt{d_k}} \right)
-   \]
+   $$
 
    These attention weights are the values that will determine how much focus is placed on each token in the sequence when computing the output for the current token.
 
 4. **Weight the Values**:
    Finally, the attention weights are applied to the **Values (V)**. The values are weighted by their corresponding attention scores, and the weighted values are summed to produce the final output for the current token.
 
-   \[
+   $$
    \text{Output} = \text{Attention Weights} \cdot V
-   \]
+   $$
 
    This output is a context-sensitive vector for each token, as it is now informed by the most relevant parts of the input sequence (based on the Query-Key interactions).
 

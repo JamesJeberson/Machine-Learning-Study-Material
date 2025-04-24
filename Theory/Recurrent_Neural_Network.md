@@ -17,30 +17,30 @@ Let's break down the steps of an RNN algorithm:
 1. **Input Sequence**: Suppose we have a sequence of data, such as a time series or a sentence. Each element in the sequence is processed one by one.
 
 2. **Hidden State Initialization**:
-   - The initial hidden state \( h_0 \) is initialized to zero (or a small random value).
+   - The initial hidden state $ h_0 $ is initialized to zero (or a small random value).
    
 3. **Processing Each Element in the Sequence**:
-   - For each time step \( t \), the RNN takes an input \( x_t \) and the previous hidden state \( h_{t-1} \).
+   - For each time step $ t $, the RNN takes an input $ x_t $ and the previous hidden state $ h_{t-1} $.
    - The hidden state is updated based on the input and previous hidden state using a transition function (typically a weighted sum followed by an activation function like tanh or ReLU).
    
-   \[
+   $$
    h_t = f(W_h h_{t-1} + W_x x_t + b)
-   \]
+   $$
    where:
-   - \( W_h \) is the weight matrix for the hidden state,
-   - \( W_x \) is the weight matrix for the input at time step \( t \),
-   - \( b \) is the bias term,
-   - \( f \) is the activation function (e.g., tanh or ReLU).
+   - $ W_h $ is the weight matrix for the hidden state,
+   - $ W_x $ is the weight matrix for the input at time step $ t $,
+   - $ b $ is the bias term,
+   - $ f $ is the activation function (e.g., tanh or ReLU).
    
-4. **Output**: The final output \( y_t \) at each time step is produced based on the hidden state \( h_t \):
+4. **Output**: The final output $ y_t $ at each time step is produced based on the hidden state $ h_t $:
    
-   \[
+   $$
    y_t = g(W_o h_t + c)
-   \]
+   $$
    where:
-   - \( W_o \) is the output weight matrix,
-   - \( c \) is the output bias term,
-   - \( g \) is an activation function (typically softmax for classification tasks).
+   - $ W_o $ is the output weight matrix,
+   - $ c $ is the output bias term,
+   - $ g $ is an activation function (typically softmax for classification tasks).
 
 5. **Training**: 
    - The network is trained using backpropagation through time (BPTT) or truncated BPTT, where the error is propagated backward across time steps.

@@ -11,39 +11,39 @@ AdaBoost is a **boosting** technique that aims to improve the predictive perform
 #### **Step-by-Step Algorithm**:
 
 1. **Initialize Weights**:
-   - Assign equal weights to all the training samples initially. If there are `n` training samples, each sample gets a weight of \( \frac{1}{n} \).
+   - Assign equal weights to all the training samples initially. If there are `n` training samples, each sample gets a weight of $ \frac{1}{n} $.
   
 2. **Train a Weak Classifier**:
    - Train a weak classifier (like a decision stump, which is a shallow decision tree) on the training data using the current weights of the samples.
    
 3. **Calculate Error**:
-   - Calculate the error rate \( \epsilon \) for the weak classifier. This is the weighted sum of misclassified samples:
-     \[
+   - Calculate the error rate $ \epsilon $ for the weak classifier. This is the weighted sum of misclassified samples:
+     $$
      \epsilon = \frac{\sum_{i \in \text{misclassified}} w_i}{\sum_{i=1}^{n} w_i}
-     \]
-   where \( w_i \) is the weight of sample \( i \).
+     $$
+   where $ w_i $ is the weight of sample $ i $.
 
 4. **Calculate Classifier Weight**:
-   - Calculate the classifier’s weight \( \alpha \) based on the error:
-     \[
+   - Calculate the classifier’s weight $ \alpha $ based on the error:
+     $$
      \alpha = \frac{1}{2} \ln\left(\frac{1 - \epsilon}{\epsilon}\right)
-     \]
-   - If the error is large (close to 0.5), \( \alpha \) will be small, meaning the model is weak. If the error is small, \( \alpha \) will be large, meaning the model is strong.
+     $$
+   - If the error is large (close to 0.5), $ \alpha $ will be small, meaning the model is weak. If the error is small, $ \alpha $ will be large, meaning the model is strong.
 
 5. **Update Weights**:
    - Update the weights of the samples. Misclassified samples receive increased weights so that subsequent classifiers focus more on them. Correctly classified samples have their weights decreased.
    - The weight update rule is:
-     \[
+     $$
      w_i \leftarrow w_i \times e^{\alpha} \text{ if misclassified, otherwise } w_i \leftarrow w_i \times e^{-\alpha}
-     \]
+     $$
    This process ensures that future classifiers focus more on the hard-to-classify examples.
 
 6. **Repeat**:
    - Repeat steps 2–5 for a set number of classifiers or until the error reaches a threshold.
-   - Each new classifier corrects the errors made by the previous classifiers, and their predictions are weighted based on \( \alpha \).
+   - Each new classifier corrects the errors made by the previous classifiers, and their predictions are weighted based on $ \alpha $.
 
 7. **Final Prediction**:
-   - The final prediction is made by combining the predictions of all weak classifiers, weighted by their \( \alpha \) values. The final decision is made using a **weighted majority vote** (for classification) or **weighted sum** (for regression).
+   - The final prediction is made by combining the predictions of all weak classifiers, weighted by their $ \alpha $ values. The final decision is made using a **weighted majority vote** (for classification) or **weighted sum** (for regression).
 
 ---
 

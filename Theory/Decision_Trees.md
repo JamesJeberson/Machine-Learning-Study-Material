@@ -135,16 +135,16 @@ y_pred = model.predict(X_test)
 1. **Accuracy**:
    - **When to Use**: Use when the classes are balanced and you want a simple metric to evaluate overall performance.
    - **Formula**:
-     \[
+     $$
      \text{Accuracy} = \frac{\text{True Positives + True Negatives}}{\text{Total Samples}}
-     \]
+     $$
 
 2. **Precision, Recall, and F1-Score**:
    - **When to Use**: Use these metrics when the classes are **imbalanced** or when false positives/false negatives have different costs.
    - **Formula**:
-     - **Precision**: \(\frac{\text{True Positives}}{\text{True Positives + False Positives}}\)
-     - **Recall**: \(\frac{\text{True Positives}}{\text{True Positives + False Negatives}}\)
-     - **F1 Score**: \(2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}\)
+     - **Precision**: $\frac{\text{True Positives}}{\text{True Positives + False Positives}}$
+     - **Recall**: $\frac{\text{True Positives}}{\text{True Positives + False Negatives}}$
+     - **F1 Score**: $2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$
 
 3. **Confusion Matrix**:
    - **When to Use**: Provides a deeper understanding of how the model performs by showing the true positives, false positives, true negatives, and false negatives.
@@ -161,16 +161,16 @@ y_pred = model.predict(X_test)
 1. **Mean Squared Error (MSE)**:
    - **When to Use**: When you want to penalize larger errors more. It's sensitive to outliers.
    - **Formula**:
-     \[
+     $$
      \text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
-     \]
+     $$
 
 2. **Root Mean Squared Error (RMSE)**:
    - **When to Use**: Similar to MSE, but in the same units as the target variable, making it easier to interpret.
    - **Formula**:
-     \[
+     $$
      \text{RMSE} = \sqrt{\text{MSE}}
-     \]
+     $$
 
 3. **R-Squared (Coefficient of Determination)**:
    - **When to Use**: To understand how well the model explains the variance in the target variable. A higher value indicates a better fit.

@@ -127,10 +127,10 @@ In the K-Nearest Neighbors (KNN) algorithm, the **distance metric** is crucial f
 
 ### 1. **Euclidean Distance**
    - **Formula**: 
-     \[
+     $$
      d(\mathbf{x}, \mathbf{y}) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}
-     \]
-     where \( \mathbf{x} = (x_1, x_2, \dots, x_n) \) and \( \mathbf{y} = (y_1, y_2, \dots, y_n) \) are two points in \(n\)-dimensional space.
+     $$
+     where $ \mathbf{x} = (x_1, x_2, \dots, x_n) $ and $ \mathbf{y} = (y_1, y_2, \dots, y_n) $ are two points in $n$-dimensional space.
    
    - **When to Use**:
      - **Continuous data** with numerical values where the concept of "distance" makes sense.
@@ -146,9 +146,9 @@ In the K-Nearest Neighbors (KNN) algorithm, the **distance metric** is crucial f
 
 ### 2. **Manhattan Distance (City Block Distance)**
    - **Formula**: 
-     \[
+     $$
      d(\mathbf{x}, \mathbf{y}) = \sum_{i=1}^n |x_i - y_i|
-     \]
+     $$
    
    - **When to Use**:
      - When data is composed of **categorical or discrete values**.
@@ -164,28 +164,28 @@ In the K-Nearest Neighbors (KNN) algorithm, the **distance metric** is crucial f
 
 ### 3. **Minkowski Distance**
    - **Formula**: 
-     \[
+     $$
      d(\mathbf{x}, \mathbf{y}) = \left( \sum_{i=1}^n |x_i - y_i|^p \right)^{1/p}
-     \]
-     where \( p \) is a parameter. When \( p = 1 \), it becomes Manhattan distance, and when \( p = 2 \), it becomes Euclidean distance.
+     $$
+     where $ p $ is a parameter. When $ p = 1 $, it becomes Manhattan distance, and when $ p = 2 $, it becomes Euclidean distance.
    
    - **When to Use**:
-     - **General use case**: It is a generalization of both Euclidean and Manhattan distances, so you can experiment with \( p \) values to suit your data.
-     - Useful when you want to **experiment** with different values of \( p \) to see how it affects the distance calculation and model performance.
+     - **General use case**: It is a generalization of both Euclidean and Manhattan distances, so you can experiment with $ p $ values to suit your data.
+     - Useful when you want to **experiment** with different values of $ p $ to see how it affects the distance calculation and model performance.
    
    - **Pros**:
-     - Provides flexibility to tune the parameter \( p \), allowing you to fine-tune the distance metric based on your data.
+     - Provides flexibility to tune the parameter $ p $, allowing you to fine-tune the distance metric based on your data.
      - Suitable for a wide range of data types (numerical, continuous, etc.).
    
    - **Cons**:
-     - Choosing the right value of \( p \) may require experimentation and cross-validation.
+     - Choosing the right value of $ p $ may require experimentation and cross-validation.
 
 ### 4. **Cosine Similarity**
    - **Formula**: 
-     \[
+     $$
      \text{cosine\_similarity}(\mathbf{x}, \mathbf{y}) = \frac{\mathbf{x} \cdot \mathbf{y}}{||\mathbf{x}|| \cdot ||\mathbf{y}||}
-     \]
-     where \( \mathbf{x} \cdot \mathbf{y} \) is the dot product of vectors, and \( ||\mathbf{x}|| \) is the magnitude (norm) of vector \( \mathbf{x} \).
+     $$
+     where $ \mathbf{x} \cdot \mathbf{y} $ is the dot product of vectors, and $ ||\mathbf{x}|| $ is the magnitude (norm) of vector $ \mathbf{x} $.
    
    - **When to Use**:
      - **Text analysis** or **document similarity**: When working with text data (e.g., document classification, information retrieval), where you want to measure the angle between two vectors rather than their distance in a traditional sense.
@@ -200,10 +200,10 @@ In the K-Nearest Neighbors (KNN) algorithm, the **distance metric** is crucial f
 
 ### 5. **Hamming Distance**
    - **Formula**: 
-     \[
+     $$
      d(\mathbf{x}, \mathbf{y}) = \sum_{i=1}^n \mathbb{1}(x_i \neq y_i)
-     \]
-     where \( \mathbb{1}(x_i \neq y_i) \) is 1 if the \(i\)-th feature of \( \mathbf{x} \) and \( \mathbf{y} \) are different, and 0 if they are the same.
+     $$
+     where $ \mathbb{1}(x_i \neq y_i) $ is 1 if the $i$-th feature of $ \mathbf{x} $ and $ \mathbf{y} $ are different, and 0 if they are the same.
    
    - **When to Use**:
      - **Categorical data** (e.g., binary or nominal data), where the features represent distinct categories (e.g., gender, type of vehicle).
@@ -219,9 +219,9 @@ In the K-Nearest Neighbors (KNN) algorithm, the **distance metric** is crucial f
 
 ### 6. **Chebyshev Distance**
    - **Formula**:
-     \[
+     $$
      d(\mathbf{x}, \mathbf{y}) = \max_i |x_i - y_i|
-     \]
+     $$
    
    - **When to Use**:
      - When you want to measure the maximum difference along any dimension.
@@ -239,7 +239,7 @@ In the K-Nearest Neighbors (KNN) algorithm, the **distance metric** is crucial f
 ### Summary of When to Use Different Metrics:
 1. **Euclidean**: Use for continuous, numerical data, especially when you have no significant outliers, and data is normalized.
 2. **Manhattan**: Use when you have grid-like structures, or data is sparse or contains outliers.
-3. **Minkowski**: Use when you need flexibility in choosing the distance parameter (e.g., you might want to experiment with different values of \( p \)).
+3. **Minkowski**: Use when you need flexibility in choosing the distance parameter (e.g., you might want to experiment with different values of $ p $).
 4. **Cosine Similarity**: Ideal for text or high-dimensional sparse data, where the magnitude of features doesn't matter, only the relative orientation.
 5. **Hamming**: Use for binary or categorical data, especially when dealing with strings or sequences.
 6. **Chebyshev**: Use when you are interested in the largest single dimension's difference, rather than the cumulative distance.
@@ -255,9 +255,9 @@ For classification tasks, the evaluation metrics help determine how well a model
 
 #### **Accuracy**
 - **Formula**:
-  \[
+  $$
   \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}
-  \]
+  $$
 - **When to Use**:
   - Use **accuracy** when the classes are balanced (i.e., there is no significant class imbalance).
   - It's a general-purpose metric, but may not be ideal when dealing with imbalanced data.
@@ -272,9 +272,9 @@ For classification tasks, the evaluation metrics help determine how well a model
 
 #### **Precision**
 - **Formula**:
-  \[
+  $$
   \text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
-  \]
+  $$
 - **When to Use**:
   - Precision is important when the **cost of false positives** is high (e.g., email spam detection or medical diagnoses where false positives can be costly).
   
@@ -288,9 +288,9 @@ For classification tasks, the evaluation metrics help determine how well a model
 
 #### **Recall (Sensitivity or True Positive Rate)**
 - **Formula**:
-  \[
+  $$
   \text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
-  \]
+  $$
 - **When to Use**:
   - Use **recall** when the **cost of false negatives** is high (e.g., in medical testing where failing to identify a disease could be fatal).
   
@@ -304,9 +304,9 @@ For classification tasks, the evaluation metrics help determine how well a model
 
 #### **F1 Score**
 - **Formula**:
-  \[
+  $$
   \text{F1 Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-  \]
+  $$
 - **When to Use**:
   - Use when you want to balance both **precision** and **recall**, especially when there is a class imbalance.
   - F1 score is often used when you care equally about precision and recall, and you want a single metric to evaluate the model.
@@ -352,10 +352,10 @@ For regression tasks, you need metrics to evaluate the model's ability to predic
 
 #### **Mean Absolute Error (MAE)**
 - **Formula**:
-  \[
+  $$
   \text{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|
-  \]
-  where \( y_i \) is the true value, and \( \hat{y}_i \) is the predicted value.
+  $$
+  where $ y_i $ is the true value, and $ \hat{y}_i $ is the predicted value.
   
 - **When to Use**:
   - Use **MAE** when you want a simple interpretation of the error in terms of the average absolute difference between the predicted and actual values.
@@ -371,9 +371,9 @@ For regression tasks, you need metrics to evaluate the model's ability to predic
 
 #### **Mean Squared Error (MSE)**
 - **Formula**:
-  \[
+  $$
   \text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
-  \]
+  $$
   
 - **When to Use**:
   - Use **MSE** when you want to give more **weight to larger errors** (since it squares the error).
@@ -389,9 +389,9 @@ For regression tasks, you need metrics to evaluate the model's ability to predic
 
 #### **Root Mean Squared Error (RMSE)**
 - **Formula**:
-  \[
+  $$
   \text{RMSE} = \sqrt{\text{MSE}}
-  \]
+  $$
   
 - **When to Use**:
   - Use **RMSE** when you want to express the error in the same units as the original data (since squaring the errors in MSE can distort the interpretation).
@@ -407,10 +407,10 @@ For regression tasks, you need metrics to evaluate the model's ability to predic
 
 #### **R-Squared (Coefficient of Determination)**
 - **Formula**:
-  \[
+  $$
   R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
-  \]
-  where \( \bar{y} \) is the mean of the true values.
+  $$
+  where $ \bar{y} $ is the mean of the true values.
 
 - **When to Use**:
   - Use **R-squared** to understand how well your model **explains the variance** of the target variable.
@@ -420,7 +420,7 @@ For regression tasks, you need metrics to evaluate the model's ability to predic
   - Provides a clear understanding of the **explanatory power** of the model.
   
 - **Cons**:
-  - **Does not account for overfitting**—a model can have high \( R^2 \) even if it's overfitted.
+  - **Does not account for overfitting**—a model can have high $ R^2 $ even if it's overfitted.
   - Can be misleading if the model doesn't fit the data well.
 
 ---

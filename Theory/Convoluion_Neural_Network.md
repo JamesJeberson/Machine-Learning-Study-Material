@@ -28,7 +28,7 @@ CNNs are composed of the following layers:
 
 3. **Activation Function (ReLU)**:
    - Apply ReLU (Rectified Linear Unit) activation function to the feature map.
-   - ReLU operation: \( f(x) = \max(0, x) \)
+   - ReLU operation: $ f(x) = \max(0, x) $
    - This step introduces non-linearity and helps the network learn complex patterns.
 
 4. **Pooling (Subsampling)**:

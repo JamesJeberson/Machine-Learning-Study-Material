@@ -16,7 +16,7 @@ A feedforward neural network typically consists of the following layers:
 
 In forward propagation, the data flows in a unidirectional manner from the input layer to the output layer through the hidden layers. Here’s how forward propagation works:
 
-- **Step 1**: The input features are fed into the network (input layer). Each feature \(x_1, x_2, \dots, x_n\) is passed to the first hidden layer.
+- **Step 1**: The input features are fed into the network (input layer). Each feature $x_1, x_2, \dots, x_n$ is passed to the first hidden layer.
   
 - **Step 2**: For each hidden layer, the weighted sum of the inputs is calculated. Each neuron in the hidden layer applies a weight to each of the inputs, sums them, and then passes the result through an **activation function** (like ReLU, Sigmoid, Tanh, etc.).
   
@@ -25,19 +25,19 @@ In forward propagation, the data flows in a unidirectional manner from the input
 - **Step 4**: The output layer generates the final result, which could be a single value (in regression tasks) or a set of values corresponding to different classes (in classification tasks).
 
 Mathematically, for a given neuron in the hidden layer:
-\[
+$$
 z_i = \sum_{j} (w_{ij} \cdot x_j) + b_i
-\]
+$$
 Where:
-- \(w_{ij}\) is the weight between the input \(x_j\) and the neuron \(i\),
-- \(x_j\) is the input feature,
-- \(b_i\) is the bias term for neuron \(i\),
-- \(z_i\) is the weighted sum before applying the activation function.
+- $w_{ij}$ is the weight between the input $x_j$ and the neuron $i$,
+- $x_j$ is the input feature,
+- $b_i$ is the bias term for neuron $i$,
+- $z_i$ is the weighted sum before applying the activation function.
 
 Then, the neuron’s output is:
-\[
+$$
 y_i = \text{activation}(z_i)
-\]
+$$
 Where the **activation function** determines how the weighted sum is transformed.
 
 #### **2. Activation Functions**
@@ -45,9 +45,9 @@ Where the **activation function** determines how the weighted sum is transformed
 Activation functions introduce **non-linearity** into the neural network, allowing the network to learn complex patterns. Without activation functions, the network would behave like a linear regression model, which limits its ability to solve complex problems.
 
 Common activation functions include:
-- **ReLU (Rectified Linear Unit)**: \( f(x) = \max(0, x) \)
-- **Sigmoid**: \( f(x) = \frac{1}{1 + e^{-x}} \)
-- **Tanh (Hyperbolic Tangent)**: \( f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} \)
+- **ReLU (Rectified Linear Unit)**: $ f(x) = \max(0, x) $
+- **Sigmoid**: $ f(x) = \frac{1}{1 + e^{-x}} $
+- **Tanh (Hyperbolic Tangent)**: $ f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} $
 - **Softmax**: Used in the output layer for multi-class classification problems to convert logits into probabilities.
 
 #### **3. Backpropagation**

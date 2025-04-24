@@ -9,54 +9,54 @@
   
   The **sigmoid function** is:
   
-  \[
+  $$
   h_\theta(x) = \frac{1}{1 + e^{-\theta^T x}}
-  \]
+  $$
   
   Where:
-  - \( \theta^T x \) is the linear combination of the input features \(x\) and the weights \( \theta \).
-  - \( e \) is the base of the natural logarithm.
-  - \( h_\theta(x) \) gives the probability of the positive class (class 1).
+  - $ \theta^T x $ is the linear combination of the input features $x$ and the weights $ \theta $.
+  - $ e $ is the base of the natural logarithm.
+  - $ h_\theta(x) $ gives the probability of the positive class (class 1).
 
 #### **2. Cost Function (Log Loss)**
 - Logistic regression uses **log loss** (also known as **binary cross-entropy**) as the cost function, which measures how well the model’s predicted probabilities match the actual class labels.
   
   The cost function for logistic regression is:
 
-  \[
+  $$
   J(\theta) = -\frac{1}{m} \sum_{i=1}^m \left[ y^{(i)} \log(h_\theta(x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta(x^{(i)})) \right]
-  \]
+  $$
 
   Where:
-  - \( m \) is the number of training examples.
-  - \( y^{(i)} \) is the actual label (0 or 1) for the \(i\)-th example.
-  - \( h_\theta(x^{(i)}) \) is the predicted probability for the \(i\)-th example.
+  - $ m $ is the number of training examples.
+  - $ y^{(i)} $ is the actual label (0 or 1) for the $i$-th example.
+  - $ h_\theta(x^{(i)}) $ is the predicted probability for the $i$-th example.
   
   The goal is to minimize this cost function using optimization techniques like **Gradient Descent**.
 
 #### **3. Gradient Descent**
-- **Gradient descent** is used to minimize the cost function. The model iteratively adjusts the weights \( \theta \) to reduce the error.
+- **Gradient descent** is used to minimize the cost function. The model iteratively adjusts the weights $ \theta $ to reduce the error.
   
   The weight update rule in gradient descent is:
   
-  \[
+  $$
   \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta)
-  \]
+  $$
 
   Where:
-  - \( \alpha \) is the learning rate (a hyperparameter that controls the step size).
-  - \( \frac{\partial}{\partial \theta_j} J(\theta) \) is the gradient of the cost function with respect to the weight \( \theta_j \).
+  - $ \alpha $ is the learning rate (a hyperparameter that controls the step size).
+  - $ \frac{\partial}{\partial \theta_j} J(\theta) $ is the gradient of the cost function with respect to the weight $ \theta_j $.
 
 #### **4. Decision Boundary**
-- Once the model is trained, you can classify new instances. If the output of the sigmoid function \( h_\theta(x) \) is greater than 0.5, you classify the instance as class 1; otherwise, it’s class 0.
+- Once the model is trained, you can classify new instances. If the output of the sigmoid function $ h_\theta(x) $ is greater than 0.5, you classify the instance as class 1; otherwise, it’s class 0.
   
-  \[
+  $$
   \text{Prediction} = 
   \begin{cases} 
   1 & \text{if } h_\theta(x) > 0.5 \\
   0 & \text{if } h_\theta(x) \leq 0.5 
   \end{cases}
-  \]
+  $$
 
 ---
 
@@ -108,15 +108,15 @@ The evaluation metrics you use depend on the problem at hand. Here are some of t
    - When to use: Useful when the classes are balanced.
    
 2. **Precision**: The proportion of positive predictions that are actually correct.
-   - Formula: \( \text{Precision} = \frac{TP}{TP + FP} \)
+   - Formula: $ \text{Precision} = \frac{TP}{TP + FP} $
    - When to use: Important when false positives are costly (e.g., in medical diagnosis).
 
 3. **Recall (Sensitivity)**: The proportion of actual positives that are correctly predicted.
-   - Formula: \( \text{Recall} = \frac{TP}{TP + FN} \)
+   - Formula: $ \text{Recall} = \frac{TP}{TP + FN} $
    - When to use: Important when false negatives are costly (e.g., detecting cancer).
 
 4. **F1 Score**: The harmonic mean of Precision and Recall.
-   - Formula: \( F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall} \)
+   - Formula: $ F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall} $
    - When to use: Useful when you need a balance between Precision and Recall, especially in imbalanced datasets.
 
 5. **ROC Curve and AUC**: The Receiver Operating Characteristic (ROC) curve plots the true positive rate (Recall) against the false positive rate. The AUC (Area Under the Curve) represents the model’s ability to distinguish between classes.
