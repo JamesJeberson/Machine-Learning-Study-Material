@@ -17,9 +17,11 @@ AdaBoost is a **boosting** technique that aims to improve the predictive perform
    - Train a weak classifier (like a decision stump, which is a shallow decision tree) on the training data using the current weights of the samples.
    
 3. **Calculate Error**:
-   - Calculate the error rate $\epsilon$ for the weak classifier. This is the weighted sum of misclassified samples:
-     $$\epsilon = \frac{\sum_{i \in \text{misclassified}} w_i}{\sum_{i=1}^{n} w_i}$$
-   where $w_i$ is the weight of sample $i$.
+   - Calculate the error rate <img src="https://render.githubusercontent.com/render/math?math=\epsilon"> for the weak classifier. This is the weighted sum of misclassified samples:
+     <p align="center">
+       <img src="https://render.githubusercontent.com/render/math?math=\epsilon = \frac{\sum_{i \in \text{misclassified}} w_i}{\sum_{i=1}^{n} w_i}">
+     </p>
+   where <img src="https://render.githubusercontent.com/render/math?math=w_i"> is the weight of sample <img src="https://render.githubusercontent.com/render/math?math=i">.
 
 4. **Calculate Classifier Weight**:
    - Calculate the classifier’s weight $ \alpha $ based on the error:
